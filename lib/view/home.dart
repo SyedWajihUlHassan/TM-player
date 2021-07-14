@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tmplayer/theme/change_theme_button_widget.dart';
+
 
 class Home extends StatefulWidget {
   final String title;
@@ -20,6 +22,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(widget.title),
+        actions: [
+          ChangeThemeButtonWidget(),
+        ],
       ),
       body: Container(
         child: Text("add folders here"),

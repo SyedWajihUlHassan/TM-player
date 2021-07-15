@@ -20,6 +20,7 @@ class MyThemes {
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    primaryColor: Colors.green,
     colorScheme: ColorScheme.light(),
   );
 }

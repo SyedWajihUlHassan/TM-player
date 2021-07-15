@@ -1,4 +1,6 @@
 
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tmplayer/theme/change_theme_button_widget.dart';
@@ -14,7 +16,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addPostFrameCallback((_) => {pickFiles()});
 
+}
+
+  pickFiles()async{
+    FilePickerResult result = await FilePicker.platform.pickFiles(type: FileType.video);
+    print(result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: Container(
-        child: Text("add folders here"),
+        child: Center(child: ElevatedButton(onPressed: pickFiles, child: Text("select video to play"))),
       ),
       drawer: Drawer(
         child: ListView(
@@ -37,21 +48,21 @@ class _HomeState extends State<Home> {
             Container(
               height: 120.0,
               child: DrawerHeader(
-                decoration:  BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Colors.blueGrey,
-                      Colors.black26,
-                    ]
-                  )
-                ),
+                // decoration:  BoxDecoration(
+                //   gradient: LinearGradient(
+                //     begin: Alignment.topRight,
+                //     end: Alignment.bottomLeft,
+                //     colors: [
+                //       Colors.blueGrey,
+                //       Colors.black26,
+                //     ]
+                //   )
+                // ),
                   child: Text(widget.title,
                   textAlign: TextAlign.center,
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(fontSize: 28.0,
-                      color: Colors.white60,
+                      // color: Colors.white60,
                       fontWeight: FontWeight.bold,
                     ),
                     ),
